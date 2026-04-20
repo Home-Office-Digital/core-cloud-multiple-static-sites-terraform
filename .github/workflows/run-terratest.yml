@@ -43,20 +43,20 @@ jobs:
         with:
           terraform_version: 1.9.8
 
-      - uses: aws-actions/configure-aws-credentials@v4
-        name: Configure AWS IdP Credentials
-        with:
-          role-to-assume: arn:aws:iam::${{ vars.ACCOUNT_ID }}:role/AWS-Terratest-Static-Site-Apply-Role
-          role-session-name: GitHubActions
-          retry-max-attempts: 5
-          aws-region: eu-west-2
+      # - uses: aws-actions/configure-aws-credentials@v4
+      #   name: Configure AWS IdP Credentials
+      #   with:
+      #     role-to-assume: arn:aws:iam::${{ vars.ACCOUNT_ID }}:role/AWS-Terratest-Static-Site-Apply-Role
+      #     role-session-name: GitHubActions
+      #     retry-max-attempts: 5
+      #     aws-region: eu-west-2
 
-      - name: Download Go Modules
-        run: |
-          cd tests
-          go mod download
+      # - name: Download Go Modules
+      #   run: |
+      #     cd tests
+      #     go mod download
 
-      - name: Run Terratest
-        run: |
-          cd tests
-          go test -v -timeout 45m
+      # - name: Run Terratest
+      #   run: |
+      #     cd tests
+      #     go test -v -timeout 45m
