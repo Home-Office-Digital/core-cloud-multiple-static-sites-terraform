@@ -7,7 +7,7 @@ mock_provider "aws" {
 mock_provider "aws" {}
 
 # =================================================================
-# CLOUDFRONT FUNCTION
+# CLOUDFRONT FUNCTION.
 # =================================================================
 
 run "cloudfront_function_name_uses_variable" {
