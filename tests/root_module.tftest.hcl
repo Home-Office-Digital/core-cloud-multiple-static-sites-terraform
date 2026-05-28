@@ -1,8 +1,10 @@
 # Tests for root module
-# Uses override_module to mock external git modules (requires Terraform >= 1.7)
 
 mock_provider "aws" {}
-mock_provider "aws" { alias = "us-east-1" }
+
+mock_provider "aws" {
+  alias = "us-east-1"
+}
 
 variables {
   env_name                 = "test"
@@ -33,7 +35,8 @@ variables {
 override_module {
   target = module.waf
   outputs = {
-    waf_acl_arn = "arn:aws:wafv2:us-east-1:123456789012:global/webacl/test/test-id"
+    waf_acl_arn  = "arn:aws:wafv2:us-east-1:123456789012:global/webacl/test/test-id"
+    waf_acl_name = "cc-static-site-test-acl"
   }
 }
 
@@ -45,16 +48,12 @@ override_module {
 }
 
 override_module {
-  target  = module.static_site["site1"]
+  target = module.static_site["site1"]
   outputs = {
-    s3_bucket_name                    = "test-bucket"
+    s3_bucket_name                      = "test-bucket"
     cloudfront_distribution_domain_name = "test.cloudfront.net"
   }
 }
-
-# =================================================================
-# WAF
-# =================================================================
 
 run "waf_acl_name_uses_env_name" {
   command = plan
@@ -64,11 +63,7 @@ run "waf_acl_name_uses_env_name" {
   }
 }
 
-# =================================================================
-# CLOUDFRONT FUNCTION
-# =================================================================
-
-run "cloudfront_function_name_uses_variable" {
+run "cloudfront_function_arn_not_empty" {
   command = plan
   assert {
     condition     = module.cloudfront.cloudfront_function_rewritedefaultindexrequest_arn != ""
