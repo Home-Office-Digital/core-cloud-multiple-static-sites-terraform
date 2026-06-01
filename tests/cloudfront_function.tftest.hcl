@@ -19,7 +19,7 @@ run "cloudfront_function_name_uses_variable" {
     source = "./cloudfront-function-terraform"
   }
   assert {
-    condition     = aws_cloudfront_function.rewritedefaultindexrequest.name == "StaticSiteReWriteDefaultIndexRequest"
+    condition     = aws_cloudfront_function.rewritedefaultindexrequest.name == "wrong-StaticSiteReWriteDefaultIndexRequest"
     error_message = "CloudFront function name must match var.name"
   }
 }
