@@ -35,3 +35,7 @@ variable "cloudfront_function_name" {
   default = "StaticSiteReWriteDefaultIndexRequest"
 }
 
+variable "enable_security_headers" {
+  type        = bool
+  default     = false
+}
