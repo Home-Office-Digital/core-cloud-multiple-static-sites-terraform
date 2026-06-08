@@ -16,7 +16,7 @@ module "cloudfront" {
 }
 
 module "static_site" {
-  source = "git::https://github.com/Home-Office-Digital/core-cloud-static-site-terraform.git?ref=feature/CCL-2917-v1" # 0.4.0
+  source = "git::https://github.com/Home-Office-Digital/core-cloud-static-site-terraform.git?ref=7021ba857ded7867e1bca905e7126fd0e9753368" # 1.0.0
 
   for_each = var.tenant_vars
 
