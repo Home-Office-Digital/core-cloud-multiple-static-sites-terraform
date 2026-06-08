@@ -16,7 +16,7 @@ module "cloudfront" {
 }
 
 module "static_site" {
-  source = "git::https://github.com/Home-Office-Digital/core-cloud-static-site-terraform.git?ref=00aa5ce59d4c654b988810a85c0deaa97a872a48" # 0.4.0
+  source = "git::https://github.com/Home-Office-Digital/core-cloud-static-site-terraform.git?ref=7021ba857ded7867e1bca905e7126fd0e9753368" # 1.0.0
 
   for_each = var.tenant_vars
 
@@ -25,6 +25,7 @@ module "static_site" {
   aws_region                      = var.aws_region
   tenant_vars                     = each.value
   waf_acl_id                      = module.waf.waf_acl_arn # cloudfront_distribution input variable waf_acl_id is actually the arn
+  enable_security_headers         = var.enable_security_headers 
   providers = {
     aws.us-east-1 = aws.us-east-1
   }
