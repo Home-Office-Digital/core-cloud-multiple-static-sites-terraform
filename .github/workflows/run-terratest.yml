@@ -9,6 +9,10 @@ on:
       - opened
       - reopened
       - synchronize
+permissions:
+  contents: read
+  id-token: write
+  actions: read
 
 jobs:
   terratest:
