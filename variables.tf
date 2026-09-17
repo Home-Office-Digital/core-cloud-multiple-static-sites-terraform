@@ -1,5 +1,17 @@
 variable "tenant_vars" {
-  type = any
+  type = map(object({
+    repositories            = list(string)
+    github_environment_name = string
+    cost_centre             = string
+    account_code            = string
+    portfolio_id            = string
+    project_id              = string
+    service_id              = string
+    product                 = string
+    component               = string
+    cloudfront_aliases      = list(string)
+    cloudfront_cert         = string
+  }))
 }
 
 variable "cloud_front_default_vars" {
@@ -21,4 +33,9 @@ variable "platform_tags" {
 variable "cloudfront_function_name" {
   type    = string
   default = "StaticSiteReWriteDefaultIndexRequest"
+}
+
+variable "enable_security_headers" {
+  type        = bool
+  default     = false
 }
