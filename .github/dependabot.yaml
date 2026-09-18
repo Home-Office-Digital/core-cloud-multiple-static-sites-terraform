@@ -5,9 +5,7 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "(GHA)"
-    reviewers:
-      - "UKHomeOffice/core-cloud-devops"
+      prefix: "chore(GHA)"
     labels:
       - "dependencies"
       - "patch"
@@ -16,9 +14,7 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "(TF)"
-    reviewers:
-      - "UKHomeOffice/core-cloud-devops"
+      prefix: "chore(TF)"
     labels:
       - "dependencies"
       - "patch"
@@ -27,9 +23,16 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "(TF)"
-    reviewers:
-      - "UKHomeOffice/core-cloud-devops"
+      prefix: "chore(TF)"
+    labels:
+      - "dependencies"
+      - "patch"
+  - package-ecosystem: "gomod"
+    directory: "/tests"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "chore(Go)"
     labels:
       - "dependencies"
       - "patch"
