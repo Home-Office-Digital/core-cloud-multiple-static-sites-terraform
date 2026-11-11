@@ -1,0 +1,49 @@
+version: 2
+updates:
+    # Enable Github Action updates
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "daily"
+      commit-message:
+          prefix: "chore(GHA)"
+      labels:
+          - "dependencies"
+          - "patch"
+          - "actions"
+
+    # Enable GoMod updates for GoLang Projects
+    - package-ecosystem: "gomod"
+      directory: "/"
+      schedule:
+          interval: "daily"
+      commit-message:
+          prefix: "chore(Go)"
+      labels:
+          - "dependencies"
+          - "patch"
+          - "go"
+
+    # Enable TF updates for Terraform Projects
+    - package-ecosystem: "terraform"
+      directory: "/"
+      schedule:
+          interval: "daily"
+      commit-message:
+          prefix: "chore(TF)"
+      labels:
+          - "dependencies"
+          - "patch"
+          - "terraform"
+
+    # Enable NPM updates
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "daily"
+      commit-message:
+          prefix: "chore(Node)"
+      labels:
+          - "dependencies"
+          - "patch"
+          - "npm"
