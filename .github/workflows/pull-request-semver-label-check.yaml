@@ -37,3 +37,7 @@ jobs:
         with:
           increment: ${{ steps.label.outputs.matchedLabels }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Bump from the highest existing tag, not the tag on the PR's base commit,
+          # which can be missing or out of date (this caused 1.7.2 -> 1.5.1 and
+          # "1.5.3 already exists" on PRs that are behind main).
+          default_to_highest: true
